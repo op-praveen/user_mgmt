@@ -1,7 +1,8 @@
 <style>
-  .mb-4{
+  .mb-4 {
     margin-bottom: 10px;
-  }  
+  }
+
   .border-green {
     border: 1px solid green;
   }
@@ -12,6 +13,10 @@
 
   .text-danger {
     font-size: 12px;
+  }
+
+  .modal-dialog.modal-xl {
+    width: 900px;
   }
 </style>
 <div class="modal-body">
@@ -43,7 +48,7 @@
 
     <div class="mb-4 row">
       <div class="col-md-5 row">
-        <label for="pstart_date" class="col-sm-5 col-form-label">Start Date</label>
+        <label for="pstart_date" class="col-sm-5 col-form-label">Start Date {{candi_project.start_date}}</label>
         <div class="col-sm-7">
           <input type="date" name="start_date" class="form-control" ng-model="candi_project.start_date"
             id="pstart_date">
@@ -55,13 +60,14 @@
       <div class="col-md-5 row">
         <label for="pend_date" class="col-sm-4 col-form-label">End Date</label>
         <div class="col-sm-8">
-          <input type="date" name="end_date" class="form-control" ng-model="candi_project.end_date" id="pend_date">
+          <input type="date" name="end_date" class="form-control" ng-disabled="disable_enddate"
+            ng-model="candi_project.end_date" id="pend_date">
         </div>
       </div>
       <div class=" col-md-2">
         <div class="form-check">
-          <input class="form-check-input" ng-click="stil_work()" ng-model="candi_project.still_work" type="checkbox"
-            value="" id="stilWork">
+          <input class="form-check-input" ng-click="stil_work(candi_project.still_work)"
+            ng-model="candi_project.still_work" type="checkbox" value="" id="stilWork">
           <label class="form-check-label" for="stilWork">
             Still work
           </label>

@@ -28,6 +28,7 @@ myApp.controller(
   ) {
     // $scope.city = demo.search_candidate;
     $scope.showSimpleToast = function ($msg) {
+      //test your toast working!
       toastService.showSimpleToast($mdToast, $log, $msg);
     };
 
@@ -113,105 +114,104 @@ myApp.controller(
     };
 
     // setting up custom validion error color
-    $scope.pnameValid = true;
-    $scope.pnameVTouched = false;
+    // $scope.pnameValid = true;
+    // $scope.pnameVTouched = false;
     // $scope.isProjectTitleErrShow='f2.t2.$touched && f2.t2.$error.required';
-    $scope.proNamelen = 0;
-    $scope.checkLengthProName = function () {
-      $scope.pnameVTouched = true;
-      var pname = $scope.candi_project.project_name;
-      $scope.proNamelen = pname == undefined ? 0 : pname.length;
-      console.log($scope.proNamelen);
-      if ($scope.proNamelen == 0) {
-        $scope.pnameValid = false;
-        $scope.isProjectTitleErrShow =
-          "f2.t2.$touched && f2.t2.$error.required";
-        $scope.proErorMsg = "Project title is required.";
-      } else if ($scope.proNamelen > 100) {
-        // alert('greater')
-        $scope.pnameValid = false;
-        $scope.isProjectTitleErrShow =
-          "f2.t2.$touched && f2.t2.$error.maxlength";
-        $scope.proErorMsg = "Maximum 100 characters";
-      } else {
-        $scope.pnameValid = true;
-        $scope.proErorMsg = "";
-        $scope.isProjectTitleErrShow = "";
-      }
-    };
+    // $scope.proNamelen = 0;
+    // $scope.checkLengthProName = function () {
+    //   $scope.pnameVTouched = true;
+    //   var pname = $scope.candi_project.project_name;
+    //   $scope.proNamelen = pname == undefined ? 0 : pname.length;
+    //   console.log($scope.proNamelen);
+    //   if ($scope.proNamelen == 0) {
+    //     $scope.pnameValid = false;
+    //     $scope.isProjectTitleErrShow =
+    //       "f2.t2.$touched && f2.t2.$error.required";
+    //     $scope.proErorMsg = "Project title is required.";
+    //   } else if ($scope.proNamelen > 100) {
+    //     // alert('greater')
+    //     $scope.pnameValid = false;
+    //     $scope.isProjectTitleErrShow =
+    //       "f2.t2.$touched && f2.t2.$error.maxlength";
+    //     $scope.proErorMsg = "Maximum 100 characters";
+    //   } else {
+    //     $scope.pnameValid = true;
+    //     $scope.proErorMsg = "";
+    //     $scope.isProjectTitleErrShow = "";
+    //   }
+    // };
 
     // for add porject of candidate start
-    $scope.ADD_CANDID_PROJECT = function (form_data) {
-      console.log(form_data);
-      // return false;
-      var fd = new FormData();
-      angular.forEach($scope.files, function (file) {
-        fd.append("file", file);
-      });
-      console.log(fd);
-      $http({
-        method: "POST",
-        url: "http://localhost/user_mgmt/db/edit_candidate.php",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          // "Content-Type": undefined,
-          // "Process-Data": false,
-        },
-        data: {
-          for: "insert_project_candidate",
-          hidden_id: $scope.candi_project.hidden_id,
-          cand_id: $scope.candi_project.cand_id,
-          project_name: form_data.project_name,
-          website: form_data.website,
-          role: form_data.role,
-          start_date: form_data.start_date,
-          end_date: form_data.end_date,
-          still_work: form_data.still_work,
-          resume: form_data.resume,
-          project_desc: form_data.project_desc,
-          add_teammate: form_data.add_teammate,
-          skill: form_data.skill,
-        },
-      }).success(function (res) {
-        console.log(res.status);
-        console.log(res.message);
-        $scope.reset();
-        $scope.hide = true;
-        $scope.getProject();
-        // var element = angular.element("#add_more_project_modal");
-        // element.modal("show");
-        if (res.status == 200 && res.message == "updated") {
-          toastService.showSimpleToast(
-            $mdToast,
-            $log,
-            "data updated successfully..."
-          );
-        } else if (res.status == 200 && res.message == "insert") {
-          toastService.showSimpleToast(
-            $mdToast,
-            $log,
-            "Project data inserted successfullly..."
-          );
-        } else {
-          toastService.showSimpleToast(
-            $mdToast,
-            $log,
-            "Having some issue on operation.."
-          );
-        }
-        if (res.error != "") {
-          $scope.success = false;
-          $scope.error = true;
-          $scope.errorMessage = res.error;
-        } else {
-          $scope.success = true;
-          $scope.error = false;
-          $scope.errorMessage = res.message;
-        }
-      });
-    };
+    // $scope.ADD_CANDID_PROJECT = function (form_data) {
+    //   console.log(form_data);
+    //   // return false;
+    //   var fd = new FormData();
+    //   angular.forEach($scope.files, function (file) {
+    //     fd.append("file", file);
+    //   });
+    //   console.log(fd);
+    //   $http({
+    //     method: "POST",
+    //     url: "http://localhost/user_mgmt/db/edit_candidate.php",
+    //     headers: {
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //       // "Content-Type": undefined,
+    //       // "Process-Data": false,
+    //     },
+    //     data: {
+    //       for: "insert_project_candidate",
+    //       hidden_id: $scope.candi_project.hidden_id,
+    //       cand_id: $scope.candi_project.cand_id,
+    //       project_name: form_data.project_name,
+    //       website: form_data.website,
+    //       role: form_data.role,
+    //       start_date: form_data.start_date,
+    //       end_date: form_data.end_date,
+    //       still_work: form_data.still_work,
+    //       resume: form_data.resume,
+    //       project_desc: form_data.project_desc,
+    //       add_teammate: form_data.add_teammate,
+    //       skill: form_data.skill,
+    //     },
+    //   }).success(function (res) {
+    //     console.log(res.status);
+    //     console.log(res.message);
+    //     $scope.reset();
+    //     $scope.hide = true;
+    //     $scope.getProject();
+    //     // var element = angular.element("#add_more_project_modal");
+    //     // element.modal("show");
+    //     if (res.status == 200 && res.message == "updated") {
+    //       toastService.showSimpleToast(
+    //         $mdToast,
+    //         $log,
+    //         "data updated successfully..."
+    //       );
+    //     } else if (res.status == 200 && res.message == "insert") {
+    //       toastService.showSimpleToast(
+    //         $mdToast,
+    //         $log,
+    //         "Project data inserted successfullly..."
+    //       );
+    //     } else {
+    //       toastService.showSimpleToast(
+    //         $mdToast,
+    //         $log,
+    //         "Having some issue on operation.."
+    //       );
+    //     }
+    //     if (res.error != "") {
+    //       $scope.success = false;
+    //       $scope.error = true;
+    //       $scope.errorMessage = res.error;
+    //     } else {
+    //       $scope.success = true;
+    //       $scope.error = false;
+    //       $scope.errorMessage = res.message;
+    //     }
+    //   });
+    // };
 
-    // for edit
     // FOR edit RECORD START
     $scope.edit_prject = function (proj_id) {
       // console.log(proj_id);
@@ -228,12 +228,16 @@ myApp.controller(
       }).success(function (res) {
         console.log(res);
         if (res[0].start_date == "0000-00-00") {
-          $start_date = "00-00-0000" + "T00:00:00.000Z";
+          $start_date = "00-00-0000";
         } else {
-          $start_date = res[0].start_date + "T00:00:00.000Z";
-          $scope.myDate = new Date("2014-03-08T00:00:00");
+          $start_date = new Date(res[0].start_date);
         }
-        console.log($start_date);
+        if (res[0].end_date == "0000-00-00") {
+          $end_date = "00-00-0000";
+        } else {
+          $end_date = new Date(res[0].end_date);
+        }
+        // console.log($start_date);
         // console.log(atob(res[0].pass));
         $scope.candi_project.hidden_id = res[0].id;
         $scope.candi_project.cand_id = res[0].cand_id;
@@ -241,8 +245,9 @@ myApp.controller(
         $scope.candi_project.website = res[0].website;
         $scope.candi_project.role = res[0].role;
         $scope.candi_project.start_date = $start_date;
-        $scope.candi_project.end_date = res[0].end_date;
-        $scope.candi_project.still_work = res[0].still_work;
+        $scope.candi_project.end_date = $end_date;
+        // on edit cannge still work value to true/false
+        $scope.candi_project.still_work = res[0].still_work == 1 ? true : false;
         $scope.candi_project.resume = res[0].resume;
         $scope.candi_project.project_desc = res[0].project_desc;
         $scope.candi_project.add_teammate = res[0].add_teammate;
@@ -363,6 +368,7 @@ myApp.controller(
     console.log(items);
     var cand_id = $routeParams.cand_id;
     var parent_scope = items.scope;
+    // get all project of the candidate
     $scope.getProject = function () {
       var url =
         "http://localhost/user_mgmt/db/edit_candidate.php?for=get_all_project&cand_id=" +
@@ -377,10 +383,11 @@ myApp.controller(
         }
       });
     };
+    // for ok
     $scope.ok = function () {
       $modalInstance.close($scope.selected.item);
     };
-
+    // dismiss modal popup
     $scope.cancel = function () {
       $modalInstance.dismiss("cancel");
     };
@@ -512,6 +519,19 @@ myApp.controller(
           $scope.errorMessage = res.message;
         }
       });
+    };
+    $scope.disable_enddate = false;
+    if ($scope.candi_project.still_work == true) {
+      $scope.disable_enddate = true;
+    }
+    $scope.stil_work = function (status) {
+      console.log(status);
+      if (status) {
+        $scope.disable_enddate = true;
+        $scope.candi_project.end_date = "";
+      } else {
+        $scope.disable_enddate = false;
+      }
     };
   }
 );
