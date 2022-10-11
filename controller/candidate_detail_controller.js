@@ -37,7 +37,7 @@ myApp.controller(
       console.log(cand_id);
 
       var url =
-        "http://localhost/Candidate/db/get_candidate.php?for=get_cand_detail&cand_id=" +
+        "http://localhost/user_mgmt/db/get_candidate.php?for=get_cand_detail&cand_id=" +
         cand_id;
       $http.get(url).success(function (res) {
         if (res.length > 0) {
@@ -58,7 +58,7 @@ myApp.controller(
       getProject();
       function getProject() {
         var url =
-          "http://localhost/Candidate/db/edit_candidate.php?for=get_all_project&cand_id=" +
+          "http://localhost/user_mgmt/db/edit_candidate.php?for=get_all_project&cand_id=" +
           cand_id;
         $http.get(url).success(function (res) {
           if (res.length > 0) {
@@ -151,7 +151,7 @@ myApp.controller(
       console.log(fd);
       $http({
         method: "POST",
-        url: "http://localhost/Candidate/db/edit_candidate.php",
+        url: "http://localhost/user_mgmt/db/edit_candidate.php",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
           // "Content-Type": undefined,
@@ -217,7 +217,7 @@ myApp.controller(
       // console.log(proj_id);
       $http({
         method: "POST",
-        url: "http://localhost/Candidate/db/edit_candidate.php",
+        url: "http://localhost/user_mgmt/db/edit_candidate.php",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -265,7 +265,7 @@ myApp.controller(
       console.log(proj_id);
       $http({
         method: "POST",
-        url: "http://localhost/Candidate/db/edit_candidate.php",
+        url: "http://localhost/user_mgmt/db/edit_candidate.php",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -365,7 +365,7 @@ myApp.controller(
     var parent_scope = items.scope;
     $scope.getProject = function () {
       var url =
-        "http://localhost/Candidate/db/edit_candidate.php?for=get_all_project&cand_id=" +
+        "http://localhost/user_mgmt/db/edit_candidate.php?for=get_all_project&cand_id=" +
         cand_id;
       $http.get(url).success(function (res) {
         if (res.length > 0) {
@@ -386,7 +386,7 @@ myApp.controller(
     };
     $scope.getProject = function () {
       var url =
-        "http://localhost/Candidate/db/edit_candidate.php?for=get_all_project&cand_id=" +
+        "http://localhost/user_mgmt/db/edit_candidate.php?for=get_all_project&cand_id=" +
         cand_id;
       $http.get(url).success(function (res) {
         if (res.length > 0) {
@@ -453,7 +453,7 @@ myApp.controller(
       console.log(fd);
       $http({
         method: "POST",
-        url: "http://localhost/Candidate/db/edit_candidate.php",
+        url: "http://localhost/user_mgmt/db/edit_candidate.php",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
           // "Content-Type": undefined,

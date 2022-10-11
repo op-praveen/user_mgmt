@@ -49,7 +49,7 @@
                 form_data.append('file', file);
             });
             console.log(form_data);
-            $http.post('http://localhost/Candidate/upload.php', form_data,  
+            $http.post('http://localhost/user_mgmt/upload.php', form_data,  
            {  
                 transformRequest: angular.identity,  
            }).success(function(response){  
@@ -59,7 +59,7 @@
            return false;
             $http({
                 method: "POST",
-                url: "http://localhost/Candidate/upload.php",
+                url: "http://localhost/user_mgmt/upload.php",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },

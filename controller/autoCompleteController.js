@@ -7,7 +7,7 @@ function($timeout, $q, $log, $http, $scope) {
   $scope.mySearchVal = "";
   $scope.serch_val_for_tbl = "";
   $scope.candi_data_1 = "";
-  var url = "http://localhost/Candidate/db/get_candidate.php?for=get_all_data";
+  var url = "http://localhost/user_mgmt/db/get_candidate.php?for=get_all_data";
   $http.get(url).success(function (res) {
     $scope.candi_data_1 = res;
   });
@@ -62,7 +62,7 @@ function($timeout, $q, $log, $http, $scope) {
 
   //build list of states as map of key-value pairs
   function loadStates() {
-    var url = "http://localhost/Candidate/db/get_candidate.php?for=get_all_data";
+    var url = "http://localhost/user_mgmt/db/get_candidate.php?for=get_all_data";
     var all_candid = [];
     $http.get(url).success(function (res) {
       $scope.candi_data_1 = res;

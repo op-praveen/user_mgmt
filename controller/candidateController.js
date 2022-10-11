@@ -8,7 +8,7 @@ myApp.controller(
     // if (cand_id != "" && cand_id!=undefined) {
     //   console.log(cand_id);
 
-    //   var url = "http://localhost/Candidate/db/get_candidate.php?for=get_cand_detail&cand_id="+cand_id;
+    //   var url = "http://localhost/user_mgmt/db/get_candidate.php?for=get_cand_detail&cand_id="+cand_id;
     //   $http.get(url).success(function (res) {
     //     $scope.candi_detail = res;
     //     console.log(res);
@@ -41,7 +41,7 @@ myApp.controller(
     };
     // var url = "db/get_candidate.php?for=get_all_data";
     var url =
-      "http://localhost/Candidate/db/get_candidate.php?for=get_all_data";
+      "http://localhost/user_mgmt/db/get_candidate.php?for=get_all_data";
     $http.get(url).success(function (res) {
       $scope.candi_data = res;
       console.log(res);
@@ -56,7 +56,7 @@ myApp.controller(
       console.log(Candi);
       $http({
         method: "POST",
-        url: "http://localhost/Candidate/db/get_candidate.php",
+        url: "http://localhost/user_mgmt/db/get_candidate.php",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -97,7 +97,7 @@ myApp.controller(
       // console.log(Candi);
       $http({
         method: "POST",
-        url: "http://localhost/Candidate/db/get_candidate.php",
+        url: "http://localhost/user_mgmt/db/get_candidate.php",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -134,7 +134,7 @@ myApp.controller(
       // console.log($scope.CandiModel);
       $http({
         method: "POST",
-        url: "http://localhost/Candidate/db/get_candidate.php",
+        url: "http://localhost/user_mgmt/db/get_candidate.php",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
