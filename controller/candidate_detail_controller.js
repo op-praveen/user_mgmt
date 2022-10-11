@@ -253,6 +253,7 @@ myApp.controller(
         $scope.candi_project.add_teammate = res[0].add_teammate;
         $scope.candi_project.skill = res[0].skill;
         $scope.open($scope.candi_project);
+        // $scope.proNamelen = $scope.candi_project.project_name.length;
 
         if (res.error != "") {
           $scope.success = false;
@@ -425,7 +426,7 @@ myApp.controller(
     $scope.pnameValid = true;
     $scope.pnameVTouched = false;
     // $scope.isProjectTitleErrShow='f2.t2.$touched && f2.t2.$error.required';
-    $scope.proNamelen = 0;
+    $scope.proNamelen = $scope.candi_project.project_name.length;
     $scope.checkLengthProName = function () {
       $scope.pnameVTouched = true;
       var pname = $scope.candi_project.project_name;
