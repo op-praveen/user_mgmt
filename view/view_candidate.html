@@ -1,0 +1,44 @@
+<md-toolbar class="md-hue-2">
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+      <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+    </md-button>
+
+    <h2 flex md-truncate>Candidate : {{candi_detail[0].name}}</h2>
+  </div>
+</md-toolbar>
+<!-- First Name : {{candi_detail[0].name}}
+Last Name : {{candi_detail[0].last_name}} -->
+<md-card md-theme="dark-grey" md-theme-watch>
+  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="12" md-cols-gt-md="6" md-row-height-gt-md="1:1"
+    md-row-height="1:2" md-gutter="12px" md-gutter-gt-sm="8px">
+
+    <md-grid-tile class="gray" md-rowspan="1" md-colspan="4" md-colspan-sm="1" md-colspan-xs="1">
+      <!-- Button trigger modal -->
+      <md-button class="md-primary md-raised demo-dialog-reuse-button" ng-click="open()">+ Add More Project</md-button>
+    </md-grid-tile>
+</md-card>
+<div class="container-fluid">
+  <h2>Projects:</h2>
+  <div class="col-md-3" style="margin: 15px;" ng-repeat="row in project_by_candId">
+    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" style="width: 330px;" md-theme-watch>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{row.project_name}} </span>
+          <span class="md-subhead">{{row.website}}</span>
+          <span class="md-subhead"><b>Role</b>: {{row.role}}</span>
+          <span class="md-subhead"><b>Description</b> : {{row.project_desc}}</span>
+          <span class="md-subhead"><b>Technologies</b> : {{row.skill}}</span>
+          <span class="md-subhead"><b>Duration</b> : {{row.start_date}} - {{row.end_date}}</span>
+        </md-card-title-text>
+        <md-card-title-media>
+          <div class="md-media-lg card-media"></div>
+        </md-card-title-media>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button  data-bs-toggle="modal" data-bs-target="#add_more_project_modal"
+          ng-click="edit_prject(row.id)">Edit</md-button>
+        <md-button ng-click="delete_project(row.id)">Delete</md-button>
+      </md-card-actions>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+
+    <!-- <link rel="stylesheet" href="assets/bootstrap-5.0.2-dist/css/bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"
+        integrity="sha512-fGDQ3tI4KUfM35YbhCdxfU8w0lk/iMn90KMhFZW9n0IYZYlxEgILSv7Q7uxF6S0vN2eSUc2nvWLnpQu03I3jNw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.min.js"
+        integrity="sha512-DxzllNa4ESjI+oxJZkjKoOo30Y3RZC1JctQhU2D9f7lpEIyEcSmRW3E1himeCPvHbrkaUpxK3vNhJcmGb3Sp6w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-resource.min.js"
+        integrity="sha512-c62x/Brk+WnqqYEUD56EONW6rkUghiLPdM9rGc0zjgmvEmWJAu4EkIBs6lKHAF1onjqwtscb7HGOXOyoC1UOtQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.min.js"
+        integrity="sha512-rvxji9ysE5/y0YZ0qx62/e0PKpaaEF37HHGpYLMRzW6zDy98AF+HkY0N5ugV4vbkEFSQlV4aHyYO3QVim3U4mg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-aria.min.js"
+        integrity="sha512-m0HeImVMhEcmv4jO+/Ti0rPJSbAJZus9NqyTZ1DrEOw0yVebRCInmVmeQJaXD/bScT3Iifz9PSR4QkYoMBg7nA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-messages.min.js"
+        integrity="sha512-nswsP+uLqBmBPOneVLLobb7pcusUrIiSV9Cq6fckI/ntCZTPWvnAPFFyNj59c6RhTbXJMnl+00ZpfiltRe4jrg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script> -->
+    <link rel="stylesheet" href="assets/angular-material.min.css">
+    <script src="assets/js/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- <script src="assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script> -->
+    <script src="assets/js/angular-route.min.js"></script>
+    <script src="assets/js/angular-resource.min.js"></script>
+    <script src="assets/js/angular-animate.min.js"></script>
+
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script> -->
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script src="assets/js/angular-aria.min.js"></script>
+    <script src="assets/js/angular-messages.min.js"></script>
+    <script src="assets/js/angular-material.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+    <style>
+        .mb-4 {
+            margin-bottom: 14px !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/"><img src="https://optimhire.com/assets/img/optim-hire-logo.svg"
+                        alt="Optimhire" width="130" height="24" /></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/add_candiate">Add candidate</a></li>
+            </ul>
+        </div>
+    </nav><br><br>
+    <div ng-view></div>
+    <script src="./controller/myapp.js" language="javascript"></script>
+    <script src="./route.js" language="javascript"></script>
+    <script src="./controller/autoCompleteController.js" language="javascript"></script>
+    <script src="./controller/candidateController.js" language="javascript"></script>
+    <script src="./controller/ckEditor_directiry.js" language="javascript"></script>
+    <script src="./controller/candidate_detail_controller.js" language="javascript"></script>
+    <script src="./services.js" language="javascript"></script>
+</body>
+
+</html>
