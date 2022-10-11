@@ -5,9 +5,6 @@
   <div ng-controller="autoCompleteController as ctrl" layout="column" ng-cloak>
     <md-content class="md-padding">
       <form ng-submit="$event.preventDefault()">
-        <!-- <p><code>md-autocomplete</code> can be used to provide search results from -->
-        <!-- local or remote data sources.</p> -->
-
         <md-autocomplete style="width: 330px;" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache"
           md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
           md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)"
@@ -51,7 +48,7 @@
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="start center">
-          <md-button class="md-raised md-primary" ng-href="#/view_candidate/{{ Candi.id }}" target="_blank">
+          <md-button class="md-raised md-primary" ui-sref="view_candidate({ cand_id:Candi.id })" target="_blank">
             <md-tooltip md-direction="top">
               View Profile
             </md-tooltip>view

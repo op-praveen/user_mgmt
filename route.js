@@ -1,18 +1,40 @@
-myApp.config(function ($routeProvider) {
-  $routeProvider
-    .when("/", {
-      templateUrl: "view/home.html",
-      controller: "autoCompleteController",
-    }).when("/view_candidate/:cand_id", {
-      templateUrl: "view/view_candidate.html",
-      controller: "candidate_detail_controller",
+myApp.config(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise("/");
+
+  $stateProvider
+    .state("home", {
+      url: "/",
+      views: {
+        "": {
+          templateUrl: "view/home.html",
+          controller: "autoCompleteController",
+        },
+      },
     })
-    .when("/add_candiate", {
-      templateUrl: "view/add_candidate.htm",
-      controller: "candidate_Controller",
-      params: { userId: "1" },
+    .state("add_candiate", {
+      url: "/add_candiate",
+      views: {
+        "": {
+          templateUrl: "view/add_candidate.htm",
+          controller: "candidate_Controller",
+        },
+      },
     })
-    .otherwise({
-      template: "<h1>Page not found</h1>",
+    .state("view_candidate", {
+      url: "/view_candidate/{cand_id:[0-9]+}", //set candidate_id param should be 0-9 
+      views: {
+        "": {
+          templateUrl: "view/view_candidate.html",
+          controller: "candidate_detail_controller",
+        },
+      },
+    })
+    .state("otherwise",{
+      url:"*path",
+      views:{
+        "":{
+          template: "<h1>Page not found</h1>",
+        }
+      }
     });
 });

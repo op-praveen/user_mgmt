@@ -17,7 +17,7 @@ myApp.controller(
   function (
     $scope,
     $http,
-    $routeParams,
+    $stateParams,
     $mdToast,
     $log,
     toastService,
@@ -33,7 +33,7 @@ myApp.controller(
     };
 
     // for get candidate detail by id start
-    var cand_id = $routeParams.cand_id;
+    var cand_id = $stateParams.cand_id;
     if (cand_id != "" && cand_id != undefined) {
       console.log(cand_id);
 
@@ -360,14 +360,14 @@ myApp.controller(
     $scope,
     $modalInstance,
     items,
-    $routeParams,
+    $stateParams,
     $http,
     toastService,
     $mdToast,
     $log
   ) {
     console.log(items);
-    var cand_id = $routeParams.cand_id;
+    var cand_id = $stateParams.cand_id;
     var parent_scope = items.scope;
     // get all project of the candidate
     $scope.getProject = function () {
