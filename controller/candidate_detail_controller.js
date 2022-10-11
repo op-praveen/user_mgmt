@@ -62,13 +62,13 @@ myApp.controller(
           "http://localhost/user_mgmt/db/edit_candidate.php?for=get_all_project&cand_id=" +
           cand_id;
         $http.get(url).success(function (res) {
-          if (res.length > 0) {
+          // if (res.length > 0) {
             $scope.project_by_candId = res;
             console.log("project");
             console.log(res);
-          } else {
-            // return (window.location = "/");
-          }
+          // } else {
+          //   // return (window.location = "/");
+          // }
         });
       }
       // return false;
