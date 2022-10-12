@@ -29,7 +29,7 @@ Last Name : {{candi_detail[0].last_name}} -->
           <span class="md-subhead"><b>Role</b>: {{row.role}}</span>
           <span class="md-subhead"><b>Description</b> : {{row.project_desc}}</span>
           <span class="md-subhead"><b>Technologies</b> : {{row.skill}}</span>
-          <span class="md-subhead"><b>Duration</b> : {{row.start_date}} - {{row.end_date}}</span>
+          <span class="md-subhead"><b>Duration</b> : {{row.start_date | date:"dd MMM yyyy"}} - {{row.end_date | date:"dd MMM yyyy"}}</span>
         </md-card-title-text>
         <md-card-title-media>
           <div class="md-media-lg card-media"></div>

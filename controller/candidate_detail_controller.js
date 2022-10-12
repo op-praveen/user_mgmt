@@ -106,8 +106,20 @@ myApp.controller(
       project_desc: "",
       add_teammate: "",
       skill: "",
-      reume_datas : "",
+      reume_datas: "",
     };
+    // getting data from getResume fatory
+    // getResume.getdata(proj_id=0,cand_id).then(
+    //   function successCallback(res2) {
+    //     console.log("getting resume factory");
+    //     console.log(res2);
+    //     $scope.candi_project.reume_datas = res2.data; // frot open edit
+    //   },
+    //   function errorCallback(res) {
+    //     alert("getting resume factory error");
+    //     console.log(res.data);
+    //   }
+    // );
     $scope.reset = function () {
       $scope.candi_project.hidden_id = 0;
       $scope.candi_project.cand_id = cand_id;
@@ -149,7 +161,7 @@ myApp.controller(
           $end_date = new Date(res[0].end_date);
         }
 
-        // getting data from factory
+        // getting data from getResume fatory
         getResume.getdata(proj_id).then(
           function successCallback(res2) {
             console.log("getting resume factory");
@@ -499,8 +511,9 @@ myApp.controller(
 );
 // For project model controller section end
 
-// creating service for getting resume detail data
-myApp.service("getResume", function ($http) {
+// creating factory for getting resume detail data
+myApp.factory("getResume", function ($http, $log) {
+  $log.log("initantiating calfactory");
   var obj = {};
   obj.getdata = function (id) {
     var url =
