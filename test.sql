@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2022 at 07:47 AM
+-- Generation Time: Oct 12, 2022 at 11:38 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -77,8 +77,29 @@ CREATE TABLE `candidate_project` (
 --
 
 INSERT INTO `candidate_project` (`id`, `cand_id`, `project_name`, `website`, `role`, `start_date`, `end_date`, `still_work`, `resume`, `project_desc`, `add_teammate`, `skill`, `added_date`) VALUES
-(61, 5, 'test', '', '', '0000-00-00', '0000-00-00', '', 'aa072505.pdf', '<p>this</p>\n', '', '', '2022-10-12 05:25:05'),
-(62, 5, 'asdfa', '', '', '0000-00-00', '0000-00-00', '', '', '<p>asdf</p>\n', '', '', '2022-10-12 05:34:45');
+(74, 5, 'asdf', '', '', '0000-00-00', '0000-00-00', '', '', '<p>asdf</p>\n', '', '', '2022-10-12 07:28:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resume_candidate`
+--
+
+CREATE TABLE `resume_candidate` (
+  `id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `candidate_id` int(11) NOT NULL,
+  `resume_name` varchar(200) NOT NULL,
+  `added_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `resume_candidate`
+--
+
+INSERT INTO `resume_candidate` (`id`, `project_id`, `candidate_id`, `resume_name`, `added_date`) VALUES
+(3, 74, 5, 'aa093632.pdf', '2022-10-12 09:38:04'),
+(4, 74, 5, 'aa113359.pdf', '2022-10-12 09:38:09');
 
 --
 -- Indexes for dumped tables
@@ -97,6 +118,12 @@ ALTER TABLE `candidate_project`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `resume_candidate`
+--
+ALTER TABLE `resume_candidate`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -110,7 +137,13 @@ ALTER TABLE `candidate`
 -- AUTO_INCREMENT for table `candidate_project`
 --
 ALTER TABLE `candidate_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
+-- AUTO_INCREMENT for table `resume_candidate`
+--
+ALTER TABLE `resume_candidate`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

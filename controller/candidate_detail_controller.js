@@ -32,7 +32,8 @@ myApp.controller(
     $mdDialog,
     $filter,
     $modal,
-    $log
+    $log,
+    getResume
   ) {
     // $scope.city = demo.search_candidate;
     $scope.showSimpleToast = function ($msg) {
@@ -105,6 +106,7 @@ myApp.controller(
       project_desc: "",
       add_teammate: "",
       skill: "",
+      reume_datas : "",
     };
     $scope.reset = function () {
       $scope.candi_project.hidden_id = 0;
@@ -119,6 +121,7 @@ myApp.controller(
       $scope.candi_project.project_desc = "";
       $scope.candi_project.add_teammate = "";
       $scope.candi_project.skill = "";
+      $scope.candi_project.reume_datas = "";
     };
     // FOR edit RECORD START
     $scope.edit_prject = function (proj_id) {
@@ -145,31 +148,45 @@ myApp.controller(
         } else {
           $end_date = new Date(res[0].end_date);
         }
-        // console.log($start_date);
-        $scope.candi_project.hidden_id = res[0].id;
-        $scope.candi_project.cand_id = res[0].cand_id;
-        $scope.candi_project.project_name = res[0].project_name;
-        $scope.candi_project.website = res[0].website;
-        $scope.candi_project.role = res[0].role;
-        $scope.candi_project.start_date = $start_date;
-        $scope.candi_project.end_date = $end_date;
-        // on edit cannge still work value to true/false
-        $scope.candi_project.still_work = res[0].still_work == 1 ? true : false;
-        $scope.candi_project.resume = res[0].resume;
-        $scope.candi_project.project_desc = res[0].project_desc;
-        $scope.candi_project.add_teammate = res[0].add_teammate;
-        $scope.candi_project.skill = res[0].skill;
-        $scope.open($scope.candi_project);
 
-        if (res.error != "") {
-          $scope.success = false;
-          $scope.error = true;
-          $scope.errorMessage = res.error;
-        } else {
-          $scope.success = true;
-          $scope.error = false;
-          $scope.errorMessage = res[0].message;
-        }
+        // getting data from factory
+        getResume.getdata(proj_id).then(
+          function successCallback(res2) {
+            console.log("getting resume factory");
+            console.log(res2);
+            $scope.candi_project.reume_datas = res2.data; // frot open edit
+            // console.log($start_date);
+            $scope.candi_project.hidden_id = res[0].id;
+            $scope.candi_project.cand_id = res[0].cand_id;
+            $scope.candi_project.project_name = res[0].project_name;
+            $scope.candi_project.website = res[0].website;
+            $scope.candi_project.role = res[0].role;
+            $scope.candi_project.start_date = $start_date;
+            $scope.candi_project.end_date = $end_date;
+            // on edit cannge still work value to true/false
+            $scope.candi_project.still_work =
+              res[0].still_work == 1 ? true : false;
+            $scope.candi_project.resume = res[0].resume;
+            $scope.candi_project.project_desc = res[0].project_desc;
+            $scope.candi_project.add_teammate = res[0].add_teammate;
+            $scope.candi_project.skill = res[0].skill;
+            $scope.open($scope.candi_project);
+
+            if (res.error != "") {
+              $scope.success = false;
+              $scope.error = true;
+              $scope.errorMessage = res.error;
+            } else {
+              $scope.success = true;
+              $scope.error = false;
+              $scope.errorMessage = res[0].message;
+            }
+          },
+          function errorCallback(res) {
+            alert("getting resume factory error");
+            console.log(res.data);
+          }
+        );
       });
     };
     // FOR DELETE RECORD START
@@ -245,7 +262,6 @@ myApp.controller(
       );
     };
     // for opend modal end
-
   }
 );
 // For candidate detail controller section end
@@ -310,7 +326,7 @@ myApp.controller(
     // assing candi_project from parent controller(candidate_detail_controller)
     $scope.candi_project = items.candi_project;
 
-    // reset var value after add/update 
+    // reset var value after add/update
     $scope.reset = function () {
       $scope.candi_project.hidden_id = 0;
       $scope.candi_project.cand_id = cand_id;
@@ -324,6 +340,7 @@ myApp.controller(
       $scope.candi_project.project_desc = "";
       $scope.candi_project.add_teammate = "";
       $scope.candi_project.skill = "";
+      $scope.candi_project.reume_datas = "";
     };
 
     // setting up custom validion error color
@@ -427,8 +444,8 @@ myApp.controller(
         var fd = new FormData();
         var files = document.getElementById("file").files[0];
         console.log(files);
-        console.log(typeof(files));
-        if (files!='undefined') {
+        console.log(typeof files);
+        if (files != "undefined") {
           console.log(last_id);
           if (last_id != "") {
             fd.append("file", files);
@@ -449,7 +466,7 @@ myApp.controller(
               function (response) {
                 console.log("showing on success");
                 console.log(response);
-                console("upload.php response");
+                console.log("upload.php response");
               },
               function (response) {
                 console.log("showing on failure");
@@ -460,10 +477,8 @@ myApp.controller(
         }
       };
       // separate function for upload resume end
-
     };
     // for add porject of candidate end
-
 
     // for enable/disable enddate based on stil_work checkbox start
     $scope.disable_enddate = false;
@@ -480,7 +495,23 @@ myApp.controller(
       }
     };
     // for enable/disable enddate based on stil_work checkbox end
-
   }
 );
 // For project model controller section end
+
+// creating service for getting resume detail data
+myApp.service("getResume", function ($http) {
+  var obj = {};
+  obj.getdata = function (id) {
+    var url =
+      "http://localhost/user_mgmt/db/getResume.php?for=get_resume&id=" + id;
+    return $http.get(url).success(function (res) {
+      if (res.length > 0) {
+        // console.log('facotry data=');
+        // console.log(res);
+        return res;
+      }
+    });
+  };
+  return obj;
+});

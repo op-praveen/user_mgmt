@@ -120,6 +120,7 @@ if (isset($project['for']) && $project['for'] == "for_delete") {
 
 if (isset($project['for']) && $project['for'] == "for_edit_project") {
     // print_r($formdata);
+    // geting candidate id 
     $id = $project['proj_id'];
     $sql = "SELECT * FROM candidate_project WHERE id = $id";
     $res = mysqli_query($conn, $sql);
