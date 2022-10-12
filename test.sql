@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2022 at 09:05 AM
+-- Generation Time: Oct 12, 2022 at 07:47 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,7 +47,8 @@ CREATE TABLE `candidate` (
 --
 
 INSERT INTO `candidate` (`id`, `name`, `last_name`, `email`, `contact`, `pass`, `address1`, `address2`, `city`, `state`, `pincode`, `added_date`) VALUES
-(5, 'test2', '', 'asdf@gmail.com', 0, '', '', '', '', 'mumbai', '555555', '2022-10-10 08:32:15');
+(5, 'test3', '', 'asdf@gmail.com', 0, '', '', '', '', 'mumbai', '555555', '2022-10-11 12:10:39'),
+(6, 'test2', '', '', 0, '', '', '', '', '', '', '2022-10-11 12:38:37');
 
 -- --------------------------------------------------------
 
@@ -76,9 +77,8 @@ CREATE TABLE `candidate_project` (
 --
 
 INSERT INTO `candidate_project` (`id`, `cand_id`, `project_name`, `website`, `role`, `start_date`, `end_date`, `still_work`, `resume`, `project_desc`, `add_teammate`, `skill`, `added_date`) VALUES
-(22, 0, 'test', '', '', '0000-00-00', '0000-00-00', '', '', '<p>test</p>\n', '', '', '2022-10-11 04:48:57'),
-(23, 1, 'test', 'www_google_com', 'developer', '0000-00-00', '0000-00-00', '', '', '<p>test</p>\n', '', '', '2022-10-11 05:45:11'),
-(25, 5, 'test', '', '', '0000-00-00', '0000-00-00', '', '', '<p>this_is_desc</p>\n', '', '', '2022-10-11 06:31:37');
+(61, 5, 'test', '', '', '0000-00-00', '0000-00-00', '', 'aa072505.pdf', '<p>this</p>\n', '', '', '2022-10-12 05:25:05'),
+(62, 5, 'asdfa', '', '', '0000-00-00', '0000-00-00', '', '', '<p>asdf</p>\n', '', '', '2022-10-12 05:34:45');
 
 --
 -- Indexes for dumped tables
@@ -104,13 +104,13 @@ ALTER TABLE `candidate_project`
 -- AUTO_INCREMENT for table `candidate`
 --
 ALTER TABLE `candidate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `candidate_project`
 --
 ALTER TABLE `candidate_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

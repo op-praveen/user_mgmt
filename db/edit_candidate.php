@@ -78,14 +78,20 @@ if (isset($project['for']) && $project['for'] == "insert_project_candidate") {
         $sql = "INSERT into candidate_project(cand_id,project_name,website,role,start_date,end_date,still_work,resume,project_desc,add_teammate,skill) values('$cand_id','$project_name','$website','$role','$start_date','$end_date','$still_work','$resume','$project_desc','$add_teammate','$skill')";
         $msg = "insert";
     }
-    $res = mysqli_query($conn, $sql);
-    if ($res) {
+    if (mysqli_query($conn, $sql)) {
+        if ($msg == "updated") {
+            $last_id = $hidden_id;
+        } else {
+            $last_id = mysqli_insert_id($conn);
+        }
         $status = 200;
     } else {
+        $last_id = "";
         $status = 202;
         $msg = "Having some issue!";
     }
     $output = array(
+        "last_id" => $last_id,
         'status'  => $status,
         'message' => $msg
     );
@@ -93,7 +99,7 @@ if (isset($project['for']) && $project['for'] == "insert_project_candidate") {
 }
 // for delete project
 if (isset($project['for']) && $project['for'] == "for_delete") {
-// if (isset($formdata->for) && $formdata->for == "for_delete") {
+    // if (isset($formdata->for) && $formdata->for == "for_delete") {
     // print_r($formdata);
     $id = $project['proj_id'];
     $sql = "DELETE FROM candidate_project WHERE id = $id";

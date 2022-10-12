@@ -12,6 +12,11 @@
   }
 
   .text-danger {
+    font-size: 13px;
+  }
+
+  .text-danger1 {
+    color: red;
     font-size: 18px;
   }
 
@@ -22,7 +27,7 @@
 <div class="modal-body">
   <form name="f2" ng-submit="ADD_CANDID_PROJECT(candi_project);">
     <div class="mb-3 row">
-      <label for="ptitle" class="col-sm-2 col-form-label">Project Title<span class="text-danger">*</sup></label>
+      <label for="ptitle" class="col-sm-2 col-form-label">Project Title<span class="text-danger1">*</sup></label>
       <div class="col-sm-10">
         <input type="text" name="t2" class="form-control" ng-model="candi_project.project_name" id="ptitle"
           ng-required="true" ng-class="pnameValid ? 'border-green' : 'border-red'" ng-keyup="checkLengthProName()"><span
@@ -34,7 +39,7 @@
     <div class="mb-4 row">
       <div class="col-md-6 row">
         <label for="pwebsite" class="col-sm-4 col-md-4 col-form-label">Website</label>
-        <div class="col-sm-7"  style="margin-left: 10px;">
+        <div class="col-sm-7" style="margin-left: 10px;">
           <input type="text" name="website" class="form-control" ng-model="candi_project.website" id="pwebsite">
         </div>
       </div>
@@ -49,7 +54,7 @@
     <div class="mb-4 row">
       <div class="col-md-5 row">
         <label for="pstart_date" class="col-sm-5 col-form-label">Start Date</label>
-        <div class="col-sm-6"  style="margin-left: 5px;">
+        <div class="col-sm-6" style="margin-left: 5px;">
           <input type="date" name="start_date" class="form-control" ng-model="candi_project.start_date"
             id="pstart_date">
           <!-- <input type="date" ng-init="candi_project.start_date=(myDate | date:'yyyy-MM-dd')"
@@ -76,16 +81,18 @@
     </div>
 
     <div class="mb-4 row">
-      <label for="presume" class="col-sm-2 col-form-label">Resume</label>
+      <label for="file" class="col-sm-2 col-form-label">Resume</label>
       <div class="col-sm-5">
-        <input type="file" file-input="files" name="resume" class="form-control" ng-model="candi_project.resume"
-          id="presume">
+        <input type="file" name="file" fileread="candi_project.resume" class="form-control" id="file" accept="application/pdf">
+        <div ng-if="candi_project.hidden_id!='' && candi_project.resume!=''">
+          Uploaded resume : <a href="../upload/{{candi_project.resume}}" target="_blank">Open</a>
+        </div>
       </div>
     </div>
 
     <div class="mb-4 row">
       <label for="pproject_desc" class="col-sm-2 col-form-label">Project Description<span
-          class="text-danger">*</sup></label>
+          class="text-danger1">*</sup></label>
       <div class="col-sm-10">
         <textarea ck-editor class="form-control" id="pproject_desc" ng-model="candi_project.project_desc"
           placeholder="Enter your project description here..." required></textarea>
